@@ -1,3 +1,6 @@
+# Практическая работа «Тик-так-бум»
+<img src="https://lms.skillfactory.ru/assets/courseware/v1/8918f2a0ee36aa741e4ac25cf7c7c6d9/asset-v1:SkillFactory+PHP-2.0+2020+type@asset+block/undraw_shared_workspace_hwky.svg" alt="Тик-Так-Бум" width="500px">
+
 ## Тик-так-бум
 #### Обязательные задания:
 Внимание! В итоговом решении в этом файле должны быть записаны только
