@@ -5,7 +5,10 @@ tikTakBoom = {
         gameStatusField,
         textFieldQuestion,
         textFieldAnswer1,
-        textFieldAnswer2
+        textFieldAnswer2,
+        textFieldAnswer3,
+        textFieldAnswer4,
+        finishButton
     ) {
         this.boomTimer = 30;
         this.countOfPlayers = 2;
@@ -16,8 +19,11 @@ tikTakBoom = {
         this.textFieldQuestion = textFieldQuestion;
         this.textFieldAnswer1 = textFieldAnswer1;
         this.textFieldAnswer2 = textFieldAnswer2;
+        this.textFieldAnswer3 = textFieldAnswer3;
+        this.textFieldAnswer4 = textFieldAnswer4;
+        this.finishButton = finishButton;
 
-        this.needRightAnswers = 3;
+        this.needRightAnswers = 2;
     },
 
     run() {
@@ -45,9 +51,12 @@ tikTakBoom = {
         if (this.currentTask[value].result) {
             this.gameStatusField.innerText = 'Верно!';
             this.rightAnswers += 1;
+            this.boomTimer += 5;
         } else {
             this.gameStatusField.innerText = 'Неверно!';
+            this.boomTimer -= 5;
         }
+
         if (this.rightAnswers < this.needRightAnswers) {
             if (this.tasks.length === 0) {
                 this.finish('lose');
@@ -60,6 +69,7 @@ tikTakBoom = {
 
         this.textFieldAnswer1.removeEventListener('click', answer1);
         this.textFieldAnswer2.removeEventListener('click', answer2);
+
     },
 
     printQuestion(task) {
@@ -80,6 +90,7 @@ tikTakBoom = {
         }
         if (result === 'won') {
             this.gameStatusField.innerText = `Вы выиграли!`;
+            this.finishButton.setAttribute('style','display:none');
         }
 
         this.textFieldQuestion.innerText = ``;
@@ -91,6 +102,7 @@ tikTakBoom = {
 
     timer() {
         if (this.state) {
+            console.log('boom:', this.boomTimer);
             this.boomTimer -= 1;
             let sec = this.boomTimer % 60;
             let min = (this.boomTimer - sec) / 60;

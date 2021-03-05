@@ -1,49 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ТикТакБум</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
 </head>
-<body>
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col col-md-8 offset-md-2">
-            <div class="row">
-                <h1>Тик-так-бум</h1>
-            </div>
-            <div class="row">
-                <span class="alert alert-primary" id="gameStatusField">Игра идёт</span>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="timer-output-wrapper">
-                        <div class="timer-output" id="timerField">
-                            00:00
+<body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+            <nav class="navbar navbar-expand">
+                <ul class="navbar-nav">
+                    <!-- <li class="nav-item"><h1 class="masthead-brand">Тик-так-бум</h1></li> -->
+                    <li class="nav-item"><a class="nav-link">Об игре</a></li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Настройки</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown">
+                        <form id="settings">
+                            <div class="form-group">
+                                <label for="">Количество игроков</label>
+                                <input id="playerCount" class="form-control" type="number" min="2" value="2" max="4">
+                                <label for="">Изменение времени</label>
+                                <input id="timeCount" class="form-control" type="number" min="0" value="30" max="100">
+                            </div>
+                        </form>
+                        <!-- <a class="dropdown-item" href="#">Добавить игкроко</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a> -->
+                    </div>
+                    </li>
+                </ul>
+                <!-- <div class="collapse navbar-collapse" id="navbarsHeader">
+                </div> -->
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover ">
+        <h1 class="gameTitle text-centers">Тик-так бум.</h1>
+
+        <div class="row first-screen">
+            <p class="lead">Перед вами игра "Тик-так-бум". Участники игры по очереди отвечают на вопросы, предложенные игрой, таким образом "обезвреживая бомбу". 
+                Если участники ответили на определенное количество вопросов за ограниченный период времени — считается, что они победили. Если нет — проиграли</p>
+            <p class="lead">В <a class="setting-link">настройках</a> вы сможете изменить количество игроков и время срабатывания таймера</p>
+            
+            <button id="start_button" class="btn-lg btn-outline-primary btn-block form-control text-center">Начать</button>
+        </div>
+
+        <div class="row contdown">
+            <span class="countdown">3</span>
+        </div>
+
+        <div class="row game-row">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col col-md-8 offset-md-2">
+                        <div class="row">
+                            <span class="alert alert-primary" id="gameStatusField">Игра идёт</span>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="timer-output-wrapper">
+                                    <div class="timer-output" id="timerField">
+                                        00:00
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h3 id="questionField"></h3>
+                        </div>
+                        <div class="row">
+                            <div id="answer1" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
+                            <div id="answer2" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
+                            <div id="answer3" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
+                            <div id="answer4" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
+                            <button id="finish_button" class="btn-lg btn-outline-danger btn-block form-control text-center">Закончить</button>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <h3 id="questionField"></h3>
-            </div>
-            <div class="row">
-                <div id="answer1" class="btn btn-primary form-control text-left answer"></div>
-            </div>
-            <div class="row">
-                <div id="answer2" class="btn btn-danger form-control text-left answer"></div>
-            </div>
         </div>
-    </div>
-</div>
-</div>
 
+        
+        <!-- <a href="#" class="btn btn-lg btn-secondary">Learn more</a> -->
+      </main>
+
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<script src="js/init.js"></script>
 <script src="js/utils.js"></script>
 <script src="js/tikTakBoom.js"></script>
 <script src="js/tikTakBoomTasks.js"></script>
 <script src="js/script.js"></script>
+
 </body>
 </html>

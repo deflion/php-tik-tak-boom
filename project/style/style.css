@@ -1,0 +1,168 @@
+@import url(media.css);
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+html,
+body {
+  height: 100%;
+  /* background-color: #333; */
+}
+
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  /* color: #fff; */
+  /* text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5); */
+  /* box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5); */
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+
+/* Header  */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.navbar-expand{
+  justify-content: center;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.nav-item{
+  font-size:  1.5rem;
+}
+
+.nav-item h1{
+  font-size: 1.5rem;
+  display: block;
+  padding: .5rem 1rem;
+  line-height: inherit;
+}
+
+.navbar-collapse{
+  flex-grow: 0;
+}
+
+.dropdown-menu{
+  width: 400px;
+  padding: 30px;
+  right: 0;
+  left: auto;
+}
+
+/* #dropdown{
+  font-size: 1rem;
+} */
+
+/* Cover 
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+} */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.timer-output{
+  width: 200px;
+  background: #222;
+  color: darkred;
+  padding: 16px 8px;
+  font-size: 64px;
+  text-align: center;
+  line-height: 1;
+  user-select: none;
+}
+
+.timer-output-wrapper{
+  width: calc(100% - 24px);
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin: 12px;
+}
+
+.countdown{
+  font-size: 5rem;
+}
+
+.setting-link{
+  cursor: pointer;
+}
+
+/* Плавное исчезновение */
+
+.b-hide {
+    display: block;
+    animation: showBlock 1s linear forwards;
+  }
+  
+  @keyframes showBlock {
+    100% {
+      opacity: 0;
+    }
+    0% {
+      opacity: 1;
+    }
+}
+
+/* Footer  */
+ .mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
