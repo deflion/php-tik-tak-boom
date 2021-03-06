@@ -15,96 +15,132 @@
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-            <nav class="navbar navbar-expand">
-                <ul class="navbar-nav">
-                    <!-- <li class="nav-item"><h1 class="masthead-brand">Тик-так-бум</h1></li> -->
-                    <li class="nav-item"><a class="nav-link">Об игре</a></li>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Настройки</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown">
-                        <form id="settings">
-                            <div class="form-group">
-                                <label for="">Количество игроков</label>
-                                <input id="playerCount" class="form-control" type="number" min="2" value="2" max="4">
-                                <label for="">Изменение времени</label>
-                                <input id="timeCount" class="form-control" type="number" min="0" value="30" max="100">
-                            </div>
-                        </form>
-                        <!-- <a class="dropdown-item" href="#">Добавить игкроко</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a> -->
-                    </div>
-                    </li>
-                </ul>
-                <!-- <div class="collapse navbar-collapse" id="navbarsHeader">
-                </div> -->
-          </nav>
+            
         </div>
       </header>
 
       <main role="main" class="inner cover ">
         <h1 class="gameTitle text-centers">Тик-так бум.</h1>
 
-        <div class="row first-screen">
-            <p class="lead">Перед вами игра "Тик-так-бум". Участники игры по очереди отвечают на вопросы, предложенные игрой, таким образом "обезвреживая бомбу". 
-                Если участники ответили на определенное количество вопросов за ограниченный период времени — считается, что они победили. Если нет — проиграли</p>
-            <p class="lead">В <a class="setting-link">настройках</a> вы сможете изменить количество игроков и время срабатывания таймера</p>
-            
-            <button id="start_button" class="btn-lg btn-outline-primary btn-block form-control text-center">Начать</button>
+        <div class="row first-screen">  
+            <button id="start_button" class="btn-lg btn-outline-secondary btn-block form-control text-center">Начать</button>
         </div>
 
-        <div class="row contdown">
+        <div class="row row-countdown hidden">
             <span class="countdown">3</span>
         </div>
 
-        <div class="row game-row">
+        <div class="row game-row hidden">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col col-md-8 offset-md-2">
-                        <div class="row">
-                            <span class="alert alert-primary" id="gameStatusField">Игра идёт</span>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="timer-output-wrapper">
-                                    <div class="timer-output" id="timerField">
-                                        00:00
-                                    </div>
+                    <div class="col">
+                        <div class="row gameCard">
+                            
+                            <div class="row timer-output-wrapper">
+                                <div class="timer-output" id="timerField">
+                                    00:00
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                            <div class="row">      
+                                <div class="additional_time hidden">- - -</div>
+                            </div>
+                            <div class="row row-status">
+                                <span class="alert alert-light" id="gameStatusField" role="alert"></span>
+                            </div>
                             <h3 id="questionField"></h3>
-                        </div>
-                        <div class="row">
                             <div id="answer1" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
                             <div id="answer2" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
-                            <div id="answer3" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
-                            <div id="answer4" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
-                            <button id="finish_button" class="btn-lg btn-outline-danger btn-block form-control text-center">Закончить</button>
+                            <div id="answer3" class="btn btn-outline-secondary btn-block form-control text-left answer hidden"></div>
+                            <div id="answer4" class="btn btn-outline-secondary btn-block form-control text-left answer hidden"></div>
+    
                         </div>
-                        
+                        <div class="row row-buttons">
+                            <div class="col col-12 col-finish">
+                                <button id="finish_button" class="btn-lg btn-outline-danger btn-block form-control text-center">Закончить</button>
+                            </div>
+                            <div class="col col-12 col-reset">
+                                <button id="reset_button" class="btn-lg btn-outline-secondary btn-block form-control text-center">Заново</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        
-        <!-- <a href="#" class="btn btn-lg btn-secondary">Learn more</a> -->
       </main>
 
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
+            <nav class="navbar navbar-expand">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target=".modal">Об игре</a></li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Настройки</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown">
+                        <form id="settings">
+                            <div class="form-group">
+                                <label class="" for="playerCount">Количество игроков</label>
+                                <div class="input-group mb-2">                                    
+                                    <input type="number" class="form-control" id="playerCount" placeholder="Количество игроков" min="2" value="2" max="4">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text" data-toggle="tooltip" data-placement="top"
+                                            title="Вы можете изменить количество игроков. Минимальное количество игроков 2, максимальное 4">?</div>
+                                    </div>
+                                </div>
+
+                                <label for="answerCount">Количество ответов</label>
+                                <div class="input-group mb-2">                                    
+                                    <input type="number" class="form-control" id="answerCount" placeholder="Количество ответов" min="3" value="19" max="30"> 
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text" data-toggle="tooltip" data-placement="top"
+                                            title="Вы можете изменить количестов правильных ответов для обезвреживания бомбы">?</div>
+                                    </div>
+                                </div>
+
+                                <label for="timeCount">Изменение времени, сек.</label>
+                                <div class="input-group mb-2">                                    
+                                    <input type="number" class="form-control" id="timeCount" placeholder="Изменение времени, сек." min="0" value="500" max="100" step="10"> 
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text" data-toggle="tooltip" data-placement="top"
+                                            title="Вы можете изменить время отсчета взрыва, но оно ограничено в 100 секунд">?</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    </li>
+                </ul>
+          </nav>
         </div>
       </footer>
     </div>
 
+    <!-- first modal -->
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Описание игры</h5>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+            <div class="modal-body">
+                <p class="lead">Перед вами игра "Тик-так-бум". Участники игры по очереди отвечают на вопросы, предложенные игрой, таким образом "обезвреживая бомбу". 
+                    Если участники ответили на определенное количество вопросов за ограниченный период времени — считается, что они победили. Если нет — проиграли</p>
+                <p class="lead">В настройках вы сможете изменить количество игроков, количетво правильных ответов и время срабатывания таймера</p>
+                <p class="lead">За каждый правильный ответ к таймеру добавляется 5 секунд, за каждый неправильный ответ на 5 секунд таймер уменьшается</p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 

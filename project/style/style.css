@@ -71,7 +71,6 @@ body {
   margin-left: 1rem;
 }
 
-
 .nav-masthead .active {
   color: #fff;
   border-bottom-color: #fff;
@@ -95,28 +94,21 @@ body {
 .dropdown-menu{
   width: 400px;
   padding: 30px;
-  right: 0;
-  left: auto;
+  bottom: 100%;
+  top: auto;
+  left: -100%;
 }
 
-/* #dropdown{
-  font-size: 1rem;
-} */
-
-/* Cover 
-.cover {
-  padding: 0 1.5rem;
+.dropdown-toggle::after{
+  border-top: 0;
+  border-bottom: .3em solid;
 }
-.cover .btn-lg {
-  padding: .75rem 1.25rem;
-  font-weight: 700;
-} */
 
-input::-webkit-outer-spin-button,
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
 
 .timer-output{
   width: 200px;
@@ -135,18 +127,42 @@ input::-webkit-inner-spin-button {
   flex-direction: row;
   align-content: center;
   justify-content: center;
-  margin: 12px;
+  margin: 12px 12px 60px 12px ;
+}
+
+.row-countdown{
+  justify-content: center;
 }
 
 .countdown{
   font-size: 5rem;
 }
 
-.setting-link{
+.nav-item{
   cursor: pointer;
 }
 
+#gameStatusField{
+  margin: 0 auto;
+}
+
+.row-status{
+  width: 100%;
+}
+
+.additional_time{
+  margin: -40px auto 0 ;
+}
+
+.row-buttons{
+  margin-top: 30px;
+}
+
 /* Плавное исчезновение */
+
+.hidden{
+  display: none;
+}
 
 .b-hide {
     display: block;
@@ -163,6 +179,3 @@ input::-webkit-inner-spin-button {
 }
 
 /* Footer  */
- .mastfoot {
-  color: rgba(255, 255, 255, .5);
-}
