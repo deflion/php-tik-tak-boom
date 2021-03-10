@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="style/style.css" type="text/css"/>
 </head>
 <body class="text-center">
+    <div class="alert alert-danger hidden  " role="alert">
+        This is a warning alert—check it out!
+    </div>
+    
+    <div class="errors alert alert-danger alert-dismissible fade" role="alert">
+        <h4 class="alert-heading">Внимание! Ошибки!</h4>
+        <p class="mb-0">Чтобы начать игру, нужно исправить данные ошибки: </p>
+        <br>
+        <p class="error_message"></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
@@ -24,6 +37,8 @@
 
         <div class="row first-screen">  
             <button id="start_button" class="btn-lg btn-outline-secondary btn-block form-control text-center">Начать</button>
+            <a href="https://t.me/deflion" target="_blank"><button class="btn-lg btn-outline-danger btn-block form-control text-center support hidden">Написать в техподдержку</button></a>
+            
         </div>
 
         <div class="row row-countdown hidden">
@@ -42,12 +57,15 @@
                                 </div>
                             </div>
                             <div class="row">      
-                                <div class="additional_time hidden">- - -</div>
+                                <div class="additional_time">- - -</div>
                             </div>
                             <div class="row row-status">
                                 <span class="alert alert-light" id="gameStatusField" role="alert"></span>
                             </div>
+
                             <h3 id="questionField"></h3>
+                            <div class="row-answer">
+                            </div>
                             <div id="answer1" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
                             <div id="answer2" class="btn btn-outline-secondary btn-block form-control text-left answer"></div>
                             <div id="answer3" class="btn btn-outline-secondary btn-block form-control text-left answer hidden"></div>
@@ -116,7 +134,7 @@
       </footer>
     </div>
 
-    <!-- first modal -->
+<!-- About game -->
 
 <div class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -135,6 +153,7 @@
         </div>
     </div>
 </div>
+
 
 
 <!-- Bootstrap core JavaScript

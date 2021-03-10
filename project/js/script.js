@@ -1,4 +1,11 @@
-window.onload = function(){};
+window.onload = function(){
+    if (checkJSON(tasks) != ""){
+        document.querySelector('.error_message').innerHTML = checkJSON(tasks);
+        document.querySelector('.errors').classList.add('show');
+        display(startButton,"none");
+        document.querySelector('.support').classList.remove('hidden');
+    }
+};
 
 tikTakBoom.init(
     tasks,
@@ -9,12 +16,10 @@ tikTakBoom.init(
     document.querySelector('#answer2'),
     document.querySelector('#answer3'),
     document.querySelector('#answer4'),
-    title,
 );
 
 startButton.addEventListener("click", () => {
     startGame();
-    
 });
 
 finishButton.addEventListener("click", ()=> {
@@ -22,7 +27,8 @@ finishButton.addEventListener("click", ()=> {
 });
 
 reset.addEventListener('click', () => {
-    startGame();
+    // startGame();
+    window.location.reload()
 });
 
 

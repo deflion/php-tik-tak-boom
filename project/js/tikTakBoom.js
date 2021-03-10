@@ -8,7 +8,6 @@ tikTakBoom = {
         textFieldAnswer2,
         textFieldAnswer3,
         textFieldAnswer4,
-        title
     ) {
         this.boomTimer = 30;
         this.countOfPlayers = 2;
@@ -21,7 +20,8 @@ tikTakBoom = {
         this.textFieldAnswer2 = textFieldAnswer2;
         this.textFieldAnswer3 = textFieldAnswer3;
         this.textFieldAnswer4 = textFieldAnswer4;
-        this.title = title;
+
+        
 
         this.needRightAnswers = 2;
     },
@@ -38,7 +38,7 @@ tikTakBoom = {
 
     turnOn() {
         const taskNumber = randomIntNumber(this.tasks.length - 1);
-        
+
         this.gameStatusField.innerText += ` Вопрос №${this.state} из категории ${this.tasks[taskNumber]["type"]}`;
         this.printQuestion(this.tasks[taskNumber]);
 
@@ -54,18 +54,11 @@ tikTakBoom = {
             this.boomTimer += 5;
             addTime.innerText = "+5 сек.";
             addTime.classList.add('b-hide');
-            setInterval(() => {
-                addTime.classList.remove('b-hide');
-            }, 1100);
-
         } else {
             this.gameStatusField.innerText = 'Неверно!';
             this.boomTimer -= 5;
             addTime.innerText = "-5 сек.";
             addTime.classList.add('b-hide');
-            setInterval(() => {
-                addTime.classList.remove('b-hide');
-            }, 1100);
         }
 
         if (this.rightAnswers < this.needRightAnswers) {
@@ -78,14 +71,25 @@ tikTakBoom = {
             this.finish('won');
         }
 
+        
+        timer = setInterval(() => {
+            addTime.classList.remove('b-hide');
+        }, 1100);
+
+        timer;
+        
+
         this.textFieldAnswer1.removeEventListener('click', answer1);
         this.textFieldAnswer2.removeEventListener('click', answer2);
+        this.textFieldAnswer3.removeEventListener('click', answer3);
+        this.textFieldAnswer4.removeEventListener('click', answer4);
     },
 
     printQuestion(task) {
         this.textFieldQuestion.innerText = task.question;
         this.textFieldAnswer1.innerText = task.answer1.value;
         this.textFieldAnswer2.innerText = task.answer2.value;
+        
         if (task.answer3) {
             this.textFieldAnswer3.classList.remove('hidden');
             this.textFieldAnswer3.innerText = task.answer3.value;
@@ -115,11 +119,11 @@ tikTakBoom = {
        
         this.state = 0;
         if (result === 'lose') {
-            this.title.innerText = `Вы проиграли!`;
+            title.innerText = `Вы проиграли!`;
         }
 
         if (result === 'won') {
-            this.title.innerText = `Вы выиграли!`;
+            title.innerText = `Вы выиграли!`;
         }
 
         display(gameCard,"none")

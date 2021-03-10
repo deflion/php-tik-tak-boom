@@ -21,6 +21,60 @@ const checkInput = (input, min, max) => {
 }
 
 // 
+const checkJSON = (json) =>{
+    let ans = JSON.parse(json);
+    let massage = ""
+    
+    if (ans.length < 30) massage += `Вопросов должно быть не меньше 30<hr>`;
+
+    for (let i = 0; i < ans.length; i++){
+
+        let error = false;
+        let arr = [];
+        let msg ="";
+
+        msg += `Вопрос ${i+1}: `;
+
+        if (ans[i].question == ""){
+            msg += `Вопрос отсутствует.<br>`;
+            error = true;
+        }
+
+        for (let j = 0; j < 5; j++){
+            if (ans[i][`answer${j+1}`]){
+                if (ans[i][`answer${j+1}`].value == ""){
+                    msg +=`Ответ ${j+1} отсутствует <br>`;
+                    error = true;
+                } 
+
+                arr[j] = ans[i][`answer${j+1}`].result
+            }
+        }
+        
+        answer = arr.reduce((res, sum) => {
+            res[sum] ? res[sum]++ : res[sum] = 1;
+            return res;
+        },{});
+
+        if (answer["true"] > 1){
+            msg +=`Более одного правильного ответа <br>`
+            error = true;
+        }
+
+        if (error === true){
+            massage += `${msg} <hr>`
+
+        } else{ 
+            msg = "";
+        }
+    }
+
+    return massage;
+    
+}
+
+
+// 
 const countdownTimer = (time) => {
     display(countdownSpan, 'flex');
     display(startButton, 'none');
@@ -58,7 +112,7 @@ const startGame = () => {
 
     title.innerHTML = "Игра начнется через...";
     
-    countdownTimer(1); 
+    countdownTimer(5); //Задать время первичного отсчета
 
     tikTakBoom.rightAnswers = 0;
 };
